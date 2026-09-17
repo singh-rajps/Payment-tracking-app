@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "name": "Salary",
+    "amount": 2500,
+    "type": "income",
+    "category": "Salary",
+    "date": "2023-10-05",
+    "status": "paid"
+  },
+  {
+    "id": 2,
+    "name": "Netflix Subscription",
+    "amount": 15.99,
+    "type": "expense",
+    "category": "Entertainment",
+    "date": "2023-10-10",
+    "status": "pending"
+  },
+  {
+    "id": 3,
+    "name": "Electric Bill",
+    "amount": 120.5,
+    "type": "expense",
+    "category": "Bills",
+    "date": "2023-10-03",
+    "status": "paid"
+  },
+  {
+    "id": 4,
+    "name": "Grocery Shopping",
+    "amount": 85.25,
+    "type": "expense",
+    "category": "Food",
+    "date": "2023-10-01",
+    "status": "paid"
+  },
+  {
+    "id": 5,
+    "name": "Amazon Purchase",
+    "amount": 65.99,
+    "type": "expense",
+    "category": "Shopping",
+    "date": "2023-09-28",
+    "status": "overdue"
+  },
+  {
+    "id": 6,
+    "name": "Freelance Work",
+    "amount": 700,
+    "type": "income",
+    "category": "Freelance",
+    "date": "2023-10-07",
+    "status": "paid"
+  }
+]

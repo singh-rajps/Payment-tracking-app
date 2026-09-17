@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Tracker | Modern Finance App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-wallet"></i>
+                    <h1>Payment Tracker</h1>
+                </div>
+                <div class="stats-container">
+                    <div class="stat-box">
+                        <h3>Total Balance</h3>
+                        <p id="total-balance">$2,450.00</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3>Pending</h3>
+                        <p id="pending-count">3</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3>Overdue</h3>
+                        <p id="overdue-count">1</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="main-content">
+            <div class="card">
+                <div class="card-header">
+                    <h2><i class="fas fa-plus-circle"></i> Add Payment</h2>
+                    <i class="fas fa-credit-card"></i>
+                </div>
+                <form id="payment-form">
+                    <div class="form-group">
+                        <label for="payment-name">Payment Name</label>
+                        <input type="text" id="payment-name" class="form-control" placeholder="e.g., Netflix Subscription" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="payment-amount">Amount</label>
+                        <input type="number" id="payment-amount" class="form-control" placeholder="0.00" min="0" step="0.01" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="payment-type">Payment Type</label>
+                        <div class="select-category">
+                            <select id="payment-type" class="form-control" required>
+                                <option value="">Select Type</option>
+                                <option value="income">Income</option>
+                                <option value="expense">Expense</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Category</label>
+                        <div class="category-tags" id="category-tags">
+                            <!-- Categories will be populated by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="payment-date">Date</label>
+                        <input type="date" id="payment-date" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="payment-status">Status</label>
+                        <div class="select-category">
+                            <select id="payment-status" class="form-control" required>
+                                <option value="paid">Paid</option>
+                                <option value="pending">Pending</option>
+                                <option value="overdue">Overdue</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-success" id="submit-payment">
+                        <i class="fas fa-save"></i> Add Payment
+                    </button>
+                    <button type="button" class="btn" id="update-payment" style="display: none;">
+                        <i class="fas fa-edit"></i> Update Payment
+                    </button>
+                    <button type="button" class="btn btn-danger" id="cancel-edit" style="display: none;">
+                        <i class="fas fa-times"></i> Cancel
+                    </button>
+                </form>
+                
+                <div class="payment-summary">
+                    <div class="summary-box summary-income">
+                        <h3>Total Income</h3>
+                        <p id="total-income">$3,200.00</p>
+                    </div>
+                    <div class="summary-box summary-expenses">
+                        <h3>Total Expenses</h3>
+                        <p id="total-expenses">$750.00</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h2><i class="fas fa-history"></i> Payment History</h2>
+                    <i class="fas fa-list"></i>
+                </div>
+                
+                <div class="filter-options">
+                    <button class="filter-btn active" data-filter="all">All Payments</button>
+                    <button class="filter-btn" data-filter="income">Income</button>
+                    <button class="filter-btn" data-filter="expense">Expenses</button>
+                    <button class="filter-btn" data-filter="pending">Pending</button>
+                </div>
+                
+                <div class="table-container">
+                    <table class="payments-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Amount</th>
+                                <th>Category</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="payments-table-body">
+                            <!-- Payments will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                    
+                    <div id="empty-payments" class="empty-state">
+                        <i class="fas fa-receipt"></i>
+                        <h3>No Payments Yet</h3>
+                        <p>Add your first payment using the form on the left</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <h2><i class="fas fa-chart-pie"></i> Payment Analytics</h2>
+                <i class="fas fa-chart-line"></i>
+            </div>
+            
+            <div class="chart-container">
+                <canvas id="payment-chart"></canvas>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Payment Tracker App &copy; 2025 | Track your finances efficiently</p>
+            <p>Total Payments: <span id="total-payments-count">0</span> | Last Updated: <span id="last-updated">Today</span></p>
+        </footer>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
