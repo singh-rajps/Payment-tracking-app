@@ -1,5 +1,9 @@
 // Payment Tracker App JavaScript
+// Payment Tracker App JavaScript
 document.addEventListener('DOMContentLoaded', function() {
+
+    const API_URL = "http://localhost:3000/api/payments";
+
     // Initialize Chart
     const ctx = document.getElementById('payment-chart').getContext('2d');
     let paymentChart = new Chart(ctx, {
